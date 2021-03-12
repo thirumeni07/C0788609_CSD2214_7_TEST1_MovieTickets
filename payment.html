@@ -47,10 +47,15 @@
                         <br>
                         <input type="submit" value="Confirm" class="btn-search">
                     </form>
-
+                    
                    
 		
 	</main>
+<script>
+    window.onload = function exampleFunction() { 
+        document.getElementById('amount').innerText = "$ "+localStorage.getItem("storageName")
+        } 
+</script>
 	
 
 </body>

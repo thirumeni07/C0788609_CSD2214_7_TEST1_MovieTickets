@@ -21,8 +21,11 @@ const updateSelectedSeatsCount = () => {
   const selectedSeatsCount = selectedSeats.length;
 
   count.innerText = selectedSeatsCount;
-  ticket_amt = selectedSeatsCount * ticketPrice;;
+  ticket_amt = selectedSeatsCount * ticketPrice;
+  localStorage.setItem("storageName",ticket_amt);
   price.innerText = selectedSeatsCount * ticketPrice;
+  var movie_name = $( "#movie option:selected" ).text();
+  document.getElementById('movie_choice').innerText = movie_name.substring(0,movie_name.indexOf("("));
 };
 
 // Seat select event
@@ -48,16 +51,7 @@ movieSelect.addEventListener('change', e => {
   updateSelectedSeatsCount();
 });
 
-function myFunction() {
-    document.getElementById("amount").innerText = sessionStorage.getItem("total_price");
+
+function save_price() {
+    localStorage.setItem("storageName",ticket_amt);
   }
-
-(function (global) {
-    document.getElementById("buy").addEventListener("click", function () {
-        global.localStorage.setItem("mySharedData", ticket_amt);
-    }, false);
-}(window));
-
-(function (global) {
-    document.getElementById("amount").value = global.localStorage.getItem("mySharedData");
-}(window));
