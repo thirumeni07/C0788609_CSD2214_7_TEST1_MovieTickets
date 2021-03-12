@@ -6,8 +6,12 @@ body{
     background-color: orangered;
 }
 .fname{
-    margin-left: 2rem;
+    margin-left: 2.7rem;
 }
 .cnum{
-    margin-left: 0.8rem;
+    margin-left: 1.4rem;
+}
+
+.cvv_num{
+    margin-left: 1.5rem;
 }
