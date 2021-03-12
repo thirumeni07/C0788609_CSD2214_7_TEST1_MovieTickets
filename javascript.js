@@ -4,7 +4,7 @@ const count = document.getElementById('count');
 const price = document.getElementById('price');
 const movieSelect = document.getElementById('movie');
 let ticketPrice = +movieSelect.value;
-var amount=0;
+var ticket_amt=0;
 
 selectedMovie = (movieIndex, moviePrice) => {
   localStorage.setItem('selectedMovieIndex', movieIndex);
@@ -21,9 +21,8 @@ const updateSelectedSeatsCount = () => {
   const selectedSeatsCount = selectedSeats.length;
 
   count.innerText = selectedSeatsCount;
-  var p = selectedSeatsCount * ticketPrice;;
+  ticket_amt = selectedSeatsCount * ticketPrice;;
   price.innerText = selectedSeatsCount * ticketPrice;
-  sessionStorage.setItem("total_price", p);
 };
 
 // Seat select event
@@ -52,3 +51,13 @@ movieSelect.addEventListener('change', e => {
 function myFunction() {
     document.getElementById("amount").innerText = sessionStorage.getItem("total_price");
   }
+
+(function (global) {
+    document.getElementById("buy").addEventListener("click", function () {
+        global.localStorage.setItem("mySharedData", ticket_amt);
+    }, false);
+}(window));
+
+(function (global) {
+    document.getElementById("amount").value = global.localStorage.getItem("mySharedData");
+}(window));
